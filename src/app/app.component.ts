@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {TodoService} from "./todo.service";
 import {AddTodoComponent} from "./add-todo/add-todo.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {Priority} from "./Priority";
+
 
 
 @Component({
@@ -12,7 +12,6 @@ import {Priority} from "./Priority";
 })
 export class AppComponent {
   title = 'ToDo-Manager';
-  prio: Priority = Priority.Normal;
 
 
   constructor(private modalService: NgbModal, public todoService: TodoService) {
