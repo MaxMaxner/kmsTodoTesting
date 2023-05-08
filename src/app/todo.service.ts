@@ -1,22 +1,23 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ToDoEntry} from "./ToDoEntry";
+import {Priority} from "./Priority";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
   public todoList: ToDoEntry[] = [
-    new ToDoEntry('Milch'),
-    new ToDoEntry('Butter'),
-    new ToDoEntry('Brot')
+    new ToDoEntry('Milch', Priority.Normal),
+    new ToDoEntry('Butter', Priority.Showstopper),
+    new ToDoEntry('Brot', Priority.Low)
   ];
 
   public doneList: ToDoEntry[] = []
 
   constructor() { }
 
-  addTodo(title: string): void {
-    this.todoList.push(new ToDoEntry(title));
+  addTodo(title: string, prio: Priority): void {
+    this.todoList.push(new ToDoEntry(title, prio));
   }
 
   deleteTodo(index: number): void {

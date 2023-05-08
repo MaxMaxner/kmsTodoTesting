@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {lastValueFrom} from "rxjs";
+import {Priority} from "../Priority";
+
 
 @Component({
   selector: 'app-add-todo',
@@ -10,13 +10,14 @@ import {lastValueFrom} from "rxjs";
 })
 export class AddTodoComponent {
   public title: string = '';
+  public priority: any;
 
   constructor(public activeModal: NgbActiveModal) {
   }
 
   save() {
     if (this.title.trim().length > 0) {
-      this.activeModal.close(this.title);
+      this.activeModal.close({ title: this.title, priority: this.priority });
     }
   }
 }
