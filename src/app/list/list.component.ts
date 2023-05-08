@@ -14,4 +14,7 @@ export class ListComponent {
 
   constructor(private modalService: NgbModal, public todoService: TodoService) {
   }
+  ngOnInit() {
+    this.list = this.todoService.prioritySort(this.list);
+  }
 }

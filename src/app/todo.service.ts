@@ -18,21 +18,36 @@ export class TodoService {
 
   addTodo(title: string, priority: Priority): void {
     this.todoList.push(new ToDoEntry(title, priority));
+    this.prioritySort(this.todoList);
   }
 
   deleteTodo(index: number): void {
     this.doneList.splice(index, 1);
+    this.prioritySort(this.todoList);
   }
 
   markDone(index: number): void {
     this.todoList[index].done = true;
     this.doneList.push(this.todoList[index]);
     this.todoList.splice(index, 1);
+    this.prioritySort(this.todoList);
   }
 
   markUndone(index: number) {
     this.doneList[index].done = false;
     this.todoList.push(this.doneList[index]);
     this.doneList.splice(index, 1);
+    this.prioritySort(this.todoList);
   }
+
+  prioritySort(todoList: ToDoEntry[]): ToDoEntry[] {
+    const priorityValues = {
+      [Priority.Showstopper]: 4,
+      [Priority.High]: 3,
+      [Priority.Normal]: 2,
+      [Priority.Low]: 1,
+    };
+    return todoList.sort((a, b) => priorityValues[b.priority] - priorityValues[a.priority]);
+  }
+
 }
