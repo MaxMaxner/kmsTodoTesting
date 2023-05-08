@@ -24,9 +24,11 @@ export class ListComponent {
           console.log(bool);
           if(bool){
             this.todoService.todoList.sort((a, b) => a.title < b.title ? -1 : 1);
+            this.todoService.doneList.sort((a, b) => a.title < b.title ? -1 : 1);
             bool = false;
           } else {
             this.todoService.todoList.sort((a, b) => a.title > b.title ? -1 : 1);
+            this.todoService.doneList.sort((a, b) => a.title > b.title ? -1 : 1);
             bool = true;
           }
           break;
@@ -34,9 +36,11 @@ export class ListComponent {
         console.log(bool);
         if(bool){
           this.todoService.todoList.sort((a, b) => a.date < b.date ? -1 : 1);
+          this.todoService.doneList.sort((a, b) => a.date < b.date ? -1 : 1);
           bool = false;
         } else {
           this.todoService.todoList.sort((a, b) => a.date > b.date ? -1 : 1);
+          this.todoService.doneList.sort((a, b) => a.date > b.date ? -1 : 1);
           bool = true;
         }
           break;
