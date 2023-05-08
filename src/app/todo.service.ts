@@ -16,8 +16,8 @@ export class TodoService {
 
   constructor() { }
 
-  addTodo(title: string, prio: Priority): void {
-    this.todoList.push(new ToDoEntry(title, prio));
+  addTodo(title: string, priority: Priority): void {
+    this.todoList.push(new ToDoEntry(title, priority));
   }
 
   deleteTodo(index: number): void {

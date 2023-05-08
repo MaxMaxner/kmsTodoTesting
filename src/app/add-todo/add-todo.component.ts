@@ -10,7 +10,7 @@ import {Priority} from "../Priority";
 })
 export class AddTodoComponent {
   public title: string = '';
-  public priority: any;
+  public priority: Priority = Priority.Normal;
 
   constructor(public activeModal: NgbActiveModal) {
   }
@@ -20,4 +20,6 @@ export class AddTodoComponent {
       this.activeModal.close({ title: this.title, priority: this.priority });
     }
   }
+
+  protected readonly Priority = Priority;
 }
