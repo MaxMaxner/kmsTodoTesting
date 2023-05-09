@@ -6,6 +6,7 @@
       <th scope="col"></th>
       <th scope="col">Title</th>
       <th scope="col">Date</th>
+      <th scope="col">Kategorie</th>
       <th scope="col"></th>
     </tr>
     </thead>
@@ -14,7 +15,12 @@
       <td>{{i}}</td>
       <td>{{item.title}}</td>
       <td>{{item.date}}</td>
+      <td>{{item.kategorie}}</td>
+
       <td class="text-right">
+        <button type="button" class="btn btn-success" (click)="addKategorieClicked(i)">
+          Kategorie
+        </button>
         <button *ngIf="!item.done" type="button" class="btn btn-primary" (click)="todoService.markDone(i)">
           Done
         </button>

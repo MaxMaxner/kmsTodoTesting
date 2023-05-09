@@ -7,12 +7,14 @@ import { ListComponent } from './list/list.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { KategorieComponent } from './kategorie/kategorie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    AddTodoComponent
+    AddTodoComponent,
+    KategorieComponent
   ],
   imports: [
     BrowserModule,
