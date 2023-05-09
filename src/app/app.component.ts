@@ -18,12 +18,10 @@ export class AppComponent {
 
   async addTodoClicked() {
     try {
-      const title = await this.modalService.open(AddTodoComponent).result;
-      this.todoService.addTodo(title);
-
+      const { title, priority } = await this.modalService.open(AddTodoComponent).result;
+      this.todoService.addTodo(title, priority);
     } catch (err) {
       console.log("Window closed...", err);
     }
   }
 }
-

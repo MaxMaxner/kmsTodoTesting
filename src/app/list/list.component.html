@@ -6,6 +6,7 @@
       <th scope="col"></th>
       <th scope="col">Title</th>
       <th scope="col">Date</th>
+      <th scope="col">Priority</th>
       <th scope="col">Kategorie</th>
       <th scope="col"></th>
     </tr>
@@ -15,6 +16,7 @@
       <td>{{i}}</td>
       <td>{{item.title}}</td>
       <td>{{item.date}}</td>
+      <td [ngClass]="item.priority">{{item.priority}}</td>
       <td>{{item.kategorie}}</td>
 
       <td class="text-right">

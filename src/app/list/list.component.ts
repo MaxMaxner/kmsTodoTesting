@@ -24,4 +24,7 @@ export class ListComponent {
       console.log("Window closed...", err);
     }
   }
+  ngOnInit() {
+    this.list = this.todoService.prioritySort(this.list);
+  }
 }
