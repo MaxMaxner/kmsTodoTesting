@@ -19,29 +19,28 @@ export class SearchbarComponent implements OnInit {
   }
 
   filterList($event : any){
-    let searchstring: string = $event.target.value;
-    let newToDoList = [];
-    let newDoneList = [];
+    let searchstring: string = $event.target.value.toLowerCase();
     console.log(searchstring);
+
+    let newToDoList = this.testList(fullToDoList, searchstring);
+    let newDoneList = this.testList(fullDoneList, searchstring);
+
     if(searchstring != ""){
-      for(let i = 0; i < fullToDoList.length; i++){
-        if(fullToDoList[i].title.includes(searchstring)){
-          newToDoList.push(fullToDoList[i])
-        }
-      }
+      this.todoService.todoList = newToDoList;
+      this.todoService.doneList = newDoneList;
     } else {
-      newToDoList = fullToDoList;
+      this.todoService.todoList = fullToDoList;
+      this.todoService.doneList = fullDoneList;
     }
-    if(searchstring != ""){
-      for(let i = 0; i < fullDoneList.length; i++){
-        if(fullDoneList[i].title.includes(searchstring)){
-          newDoneList.push(fullToDoList[i])
-        }
+  }
+
+  testList(list: any, searchstring: string){
+    let newList = [];
+    for(let i = 0; i < list.length; i++){
+      if(list[i].title.toLowerCase().includes(searchstring)){
+        newList.push(list[i])
       }
-    } else {
-      newDoneList = fullDoneList;
     }
-    this.todoService.todoList = newToDoList;
-    this.todoService.doneList = newDoneList;
+    return newList;
   }
 }
