@@ -37,7 +37,13 @@ export class SearchbarComponent implements OnInit {
   testList(list: any, searchstring: string){
     let newList = [];
     for(let i = 0; i < list.length; i++){
-      if(list[i].title.toLowerCase().includes(searchstring)){
+      let title = list[i].title.toLowerCase();
+      let priority = list[i].priority.toLowerCase();
+      let kategorie = "";
+      if(list[i].kategorie != null){
+        kategorie = list[i].kategorie.toLowerCase();
+      }
+      if(title.includes(searchstring) || priority.includes(searchstring) || kategorie.includes(searchstring)){
         newList.push(list[i])
       }
     }
