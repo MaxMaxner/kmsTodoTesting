@@ -1,6 +1,21 @@
-img {   
-    width: 1vw;
-    height: 2vh;
+.showstopper {
+  color: red;
+  font-weight: bold;
+}
+
+.high {
+  color: orange;
+}
+
+.normal {
+  color: dodgerblue;
+}
+
+.low {
+  color: lightgreen;
+}
+button{
+  margin-left: 5px
 }
 
 .sort-button {

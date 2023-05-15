@@ -1,4 +1,5 @@
-<div class="modal-header"><h4 class="modal-title">New Entry</h4>
+<div class="modal-header">
+  <h4 class="modal-title">New Entry</h4>
   <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()">
   </button>
 </div>
@@ -6,6 +7,15 @@
   <div class="form-group">
     <label for="itemInput">Title</label>
     <input type="text" class="form-control" id="itemInput" [(ngModel)]="title">
+  </div>
+  <div class="form-group">
+    <label for="prioritySelect">Priority</label>
+    <select class="form-control" id="prioritySelect" [(ngModel)]="priority">
+      <option [value]="Priority.Showstopper">Showstopper</option>
+      <option [value]="Priority.High">High</option>
+      <option [value]="Priority.Normal">Normal</option>
+      <option [value]="Priority.Low">Low</option>
+    </select>
   </div>
 </div>
 <div class="modal-footer">

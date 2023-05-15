@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {TodoService} from "./todo.service";
 import {AddTodoComponent} from "./add-todo/add-todo.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-
+import {KategorieComponent} from "./kategorie/kategorie.component";
+import {Kategorie} from "./Kategorie";
 
 @Component({
   selector: 'app-root',
@@ -14,11 +15,11 @@ export class AppComponent {
   
   constructor(private modalService: NgbModal, public todoService: TodoService) {
   }
-  
-  async addClicked() {
+
+  async addTodoClicked() {
     try {
-      const title = await this.modalService.open(AddTodoComponent).result;
-      this.todoService.addTodo(title);
+      const { title, priority } = await this.modalService.open(AddTodoComponent).result;
+      this.todoService.addTodo(title, priority);
     } catch (err) {
       console.log("Window closed...", err);
     }

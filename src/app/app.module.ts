@@ -7,6 +7,7 @@ import { ListComponent } from './list/list.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { KategorieComponent } from './kategorie/kategorie.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 
 @NgModule({
@@ -14,6 +15,7 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
     AppComponent,
     ListComponent,
     AddTodoComponent,
+    KategorieComponent,
     SearchbarComponent
   ],
   imports: [
