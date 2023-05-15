@@ -7,12 +7,14 @@ import { ListComponent } from './list/list.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { SearchbarComponent } from './searchbar/searchbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    AddTodoComponent
+    AddTodoComponent,
+    SearchbarComponent
   ],
   imports: [
     BrowserModule,
