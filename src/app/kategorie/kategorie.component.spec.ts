@@ -3,7 +3,7 @@ import { KategorieComponent } from './kategorie.component'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
 
 //Schaut in Vanilla Version, ob die Komponente überhaupt gerendet wird
-fdescribe('KateogorieComponent', () => {
+describe('KateogorieComponent', () => {
     let component: KategorieComponent
     let fixture: ComponentFixture<KategorieComponent>
 
