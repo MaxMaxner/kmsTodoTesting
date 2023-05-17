@@ -1,32 +1,40 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { ListComponent } from './list.component'
-import { TodoService } from '../todo.service'
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { ListComponent } from './list.component';
+import { TodoService } from '../todo.service';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { KategorieComponent } from '../kategorie/kategorie.component';
 
 describe('ListComponent', () => {
-    let component: ListComponent
-    let fixture: ComponentFixture<ListComponent>
-    let modalService: NgbModal
+  let component: ListComponent;
+  let modalService: NgbModal;
+  let todoService: TodoService;
 
-    beforeEach(async () => {
-        const todoServiceSpy = jasmine.createSpyObj<TodoService>([
-            'prioritySort',
-        ])
-        todoServiceSpy.prioritySort.and.returnValue(todoServiceSpy.todoList)
+  beforeEach(() => {
+    modalService = jasmine.createSpyObj('NgbModal', ['open']);
+    todoService = jasmine.createSpyObj('TodoService', ['addBezeichnung', 'prioritySort']);
+    component = new ListComponent(modalService, todoService);
+  });
 
-        component = new ListComponent(modalService, todoServiceSpy)
-        component.ngOnInit
 
-        fixture = TestBed.createComponent(ListComponent)
-        component = fixture.componentInstance
-        fixture.detectChanges()
-    })
+  it('should add a category when addCategoryClicked is called', async () => {
+    const mockIndex = 0;
+    const mockModalRef: Partial<NgbModalRef> = {
+      close: jasmine.createSpy('close'),
+      dismiss: jasmine.createSpy('dismiss'),
+      componentInstance: {},
+      result: Promise.resolve('Category'),
+    };
 
-    it('should create', () => {
-        expect(component).toBeTruthy()
-    })
+    (modalService.open as jasmine.Spy).and.returnValue(mockModalRef);
 
-    it('should have todos', () => {
-        expect(component.list.length).toBe(3)
-    })
-})
+    await component.addKategorieClicked(mockIndex);
+
+    expect(modalService.open).toHaveBeenCalledWith(KategorieComponent);
+    expect(todoService.addBezeichnung).toHaveBeenCalledWith('Category', mockIndex);
+  });
+
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+});
