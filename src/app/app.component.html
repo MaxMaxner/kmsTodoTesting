@@ -1,16 +1,17 @@
 <nav class="navbar navbar-dark bg-dark">
-  <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1">{{title}}</span>
-  </div>
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">{{ title }}</span>
+    </div>
 </nav>
 <app-searchbar></app-searchbar>
 <div class="container">
+    <button class="mt-2 mb-2 btn btn-primary" (click)="addTodoClicked()">
+        Add ToDo
+    </button>
 
-  <button class="mt-2 mb-2 btn btn-primary" (click)="addTodoClicked()">Add ToDo</button>
+    <h5>ToDo</h5>
+    <app-list [list]="todoService.todoList"></app-list>
 
-  <h5>ToDo</h5>
-  <app-list [list]="todoService.todoList"></app-list>
-
-  <h5>Done</h5>
-  <app-list [list]="todoService.doneList"></app-list>
+    <h5>Done</h5>
+    <app-list [list]="todoService.doneList"></app-list>
 </div>

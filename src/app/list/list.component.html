@@ -1,39 +1,57 @@
 <div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Title</th>
+                <th scope="col">Date</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Kategorie</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of list; let i = index">
+                <td>{{ i }}</td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.date }}</td>
+                <td [ngClass]="item.priority">{{ item.priority }}</td>
+                <td>{{ item.kategorie }}</td>
 
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Title</th>
-      <th scope="col">Date</th>
-      <th scope="col">Priority</th>
-      <th scope="col">Kategorie</th>
-      <th scope="col"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let item of list; let i = index">
-      <td>{{i}}</td>
-      <td>{{item.title}}</td>
-      <td>{{item.date}}</td>
-      <td [ngClass]="item.priority">{{item.priority}}</td>
-      <td>{{item.kategorie}}</td>
-
-      <td class="text-right">
-        <button type="button" class="btn btn-success" (click)="addKategorieClicked(i)">
-          Kategorie
-        </button>
-        <button *ngIf="!item.done" type="button" class="btn btn-primary" (click)="todoService.markDone(i)">
-          Done
-        </button>
-        <button *ngIf="item.done" type="button" class="btn btn-primary" (click)="todoService.markUndone(i)">
-          Undone
-        </button>
-        <button *ngIf="item.done" type="button" class="ms-1 btn btn-danger" (click)="todoService.deleteTodo(i)">
-          Delete
-        </button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+                <td class="text-right">
+                    <button
+                        type="button"
+                        class="btn btn-success"
+                        (click)="addKategorieClicked(i)"
+                    >
+                        Kategorie
+                    </button>
+                    <button
+                        *ngIf="!item.done"
+                        type="button"
+                        class="btn btn-primary"
+                        (click)="todoService.markDone(i)"
+                    >
+                        Done
+                    </button>
+                    <button
+                        *ngIf="item.done"
+                        type="button"
+                        class="btn btn-primary"
+                        (click)="todoService.markUndone(i)"
+                    >
+                        Undone
+                    </button>
+                    <button
+                        *ngIf="item.done"
+                        type="button"
+                        class="ms-1 btn btn-danger"
+                        (click)="todoService.deleteTodo(i)"
+                    >
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

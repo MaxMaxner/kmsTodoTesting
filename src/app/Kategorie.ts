@@ -1,7 +1,7 @@
 export class Kategorie {
-  bezeichnung: string
+    bezeichnung: string
 
-  constructor(bezeichnung: string) {
-    this.bezeichnung = bezeichnung
-  }
+    constructor(bezeichnung: string) {
+        this.bezeichnung = bezeichnung
+    }
 }

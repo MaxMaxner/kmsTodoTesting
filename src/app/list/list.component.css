@@ -1,21 +1,21 @@
 .showstopper {
-  color: red;
-  font-weight: bold;
+    color: red;
+    font-weight: bold;
 }
 
 .high {
-  color: orange;
+    color: orange;
 }
 
 .normal {
-  color: dodgerblue;
+    color: dodgerblue;
 }
 
 .low {
-  color: lightgreen;
+    color: lightgreen;
 }
-button{
-  margin-left: 5px
+button {
+    margin-left: 5px;
 }
 
 .sort-button {

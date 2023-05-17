@@ -1,27 +1,29 @@
-import {Component} from '@angular/core';
-import {TodoService} from "./todo.service";
-import {AddTodoComponent} from "./add-todo/add-todo.component";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {KategorieComponent} from "./kategorie/kategorie.component";
-import {Kategorie} from "./Kategorie";
+import { Component } from '@angular/core'
+import { TodoService } from './todo.service'
+import { AddTodoComponent } from './add-todo/add-todo.component'
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'ToDo-Manager';
-  
-  constructor(private modalService: NgbModal, public todoService: TodoService) {
-  }
+    title = 'ToDo-Manager'
 
-  async addTodoClicked() {
-    try {
-      const { title, priority } = await this.modalService.open(AddTodoComponent).result;
-      this.todoService.addTodo(title, priority);
-    } catch (err) {
-      console.log("Window closed...", err);
+    constructor(
+        private modalService: NgbModal,
+        public todoService: TodoService
+    ) {}
+
+    async addTodoClicked() {
+        try {
+            const { title, priority } = await this.modalService.open(
+                AddTodoComponent
+            ).result
+            this.todoService.addTodo(title, priority)
+        } catch (err) {
+            console.log('Window closed...', err)
+        }
     }
-  }
 }
