@@ -2,6 +2,8 @@ import { ListComponent } from './list.component';
 import { TodoService } from '../todo.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { KategorieComponent } from '../kategorie/kategorie.component';
+import { ToDoEntry } from '../ToDoEntry';
+import { Priority } from '../Priority';
 
 describe('ListComponent', () => {
   let component: ListComponent;
@@ -14,6 +16,17 @@ describe('ListComponent', () => {
     component = new ListComponent(modalService, todoService);
   });
 
+  it('should have todos', () => {
+
+    const mockToDoEntries: ToDoEntry[] = [
+      { title: 'Task 1', done: false, date: new Date(), priority: Priority.Low },
+      { title: 'Task 2', done: false, date: new Date(), priority: Priority.Normal },
+      { title: 'Task 3', done: false, date: new Date(), priority: Priority.High }
+    ];
+    component.list = mockToDoEntries;
+
+    expect(component.list.length).toBe(mockToDoEntries.length);
+  });
 
   it('should add a category when addCategoryClicked is called', async () => {
     const mockIndex = 0;
