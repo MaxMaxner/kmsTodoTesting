@@ -9,8 +9,8 @@ describe('ListComponent', () => {
   let component: ListComponent;
   let modalService: NgbModal;
   let todoService: TodoService;
-
-  beforeEach(() => {
+  
+  beforeAll(() => {
     modalService = jasmine.createSpyObj('NgbModal', ['open']);
     todoService = jasmine.createSpyObj('TodoService', ['addBezeichnung', 'prioritySort']);
     component = new ListComponent(modalService, todoService);
@@ -49,5 +49,4 @@ describe('ListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 });

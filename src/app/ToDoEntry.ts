@@ -5,13 +5,10 @@ export class ToDoEntry {
     done: boolean
     date: Date
     priority: Priority
-    kategorie?: string
+    kategorie?: string;
+    [key: string]: any
 
-    constructor(
-        title: string,
-        priority: Priority = Priority.Normal,
-        kategorie?: string
-    ) {
+    constructor(title: string, priority: Priority = Priority.Normal, kategorie?: string) {
         this.title = title
         this.date = new Date()
         this.done = false

@@ -3,8 +3,10 @@ import { ToDoEntry } from '../ToDoEntry'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { TodoService } from '../todo.service'
 import { KategorieComponent } from '../kategorie/kategorie.component'
+import { Priority } from '../Priority'
 
-let bool = true
+let toDoSort = true
+let doneSort = true
 
 @Component({
     selector: 'app-list',
@@ -14,15 +16,11 @@ let bool = true
 export class ListComponent {
     @Input() list!: ToDoEntry[]
 
-    constructor(
-        private modalService: NgbModal,
-        public todoService: TodoService
-    ) {}
+    constructor(private modalService: NgbModal, public todoService: TodoService) {}
 
     async addKategorieClicked(index: number) {
         try {
-            const bezeichnung = await this.modalService.open(KategorieComponent)
-                .result
+            const bezeichnung = await this.modalService.open(KategorieComponent).result
             this.todoService.addBezeichnung(bezeichnung, index)
         } catch (err) {
             console.log('Window closed...', err)
@@ -33,48 +31,37 @@ export class ListComponent {
         console.log(this.list)
     }
 
-    sort(toSort: string) {
-        switch (toSort) {
-            case 'title':
-                console.log(bool)
-                if (bool) {
-                    this.todoService.todoList.sort((a, b) =>
-                        a.title < b.title ? -1 : 1
-                    )
-                    this.todoService.doneList.sort((a, b) =>
-                        a.title < b.title ? -1 : 1
-                    )
-                    bool = false
-                } else {
-                    this.todoService.todoList.sort((a, b) =>
-                        a.title > b.title ? -1 : 1
-                    )
-                    this.todoService.doneList.sort((a, b) =>
-                        a.title > b.title ? -1 : 1
-                    )
-                    bool = true
+    alphaNumSort(toSort: string) {
+        toDoSort = this.sortBy(toSort, this.todoService.todoList, toDoSort)
+        doneSort = this.sortBy(toSort, this.todoService.doneList, doneSort)
+    }
+
+    sortBy(toSort: string, list: ToDoEntry[], bool: boolean) {
+        console.log(toSort)
+        if (bool) {
+            if (toSort != 'priority') list.sort((a, b) => (a[toSort] < b[toSort] ? -1 : 1))
+            else {
+                const priorityValues = {
+                    [Priority.Showstopper]: 4,
+                    [Priority.High]: 3,
+                    [Priority.Normal]: 2,
+                    [Priority.Low]: 1,
                 }
-                break
-            case 'date':
-                console.log(bool)
-                if (bool) {
-                    this.todoService.todoList.sort((a, b) =>
-                        a.date < b.date ? -1 : 1
-                    )
-                    this.todoService.doneList.sort((a, b) =>
-                        a.date < b.date ? -1 : 1
-                    )
-                    bool = false
-                } else {
-                    this.todoService.todoList.sort((a, b) =>
-                        a.date > b.date ? -1 : 1
-                    )
-                    this.todoService.doneList.sort((a, b) =>
-                        a.date > b.date ? -1 : 1
-                    )
-                    bool = true
+                list.sort((a, b) => priorityValues[b.priority] - priorityValues[a.priority])
+            }
+            return (bool = false)
+        } else {
+            if (toSort != 'priority') list.sort((a, b) => (a[toSort] > b[toSort] ? -1 : 1))
+            else {
+                const priorityValues = {
+                    [Priority.Showstopper]: 4,
+                    [Priority.High]: 3,
+                    [Priority.Normal]: 2,
+                    [Priority.Low]: 1,
                 }
-                break
+                list.sort((a, b) => priorityValues[a.priority] - priorityValues[b.priority])
+            }
+            return (bool = true)
         }
     }
 }

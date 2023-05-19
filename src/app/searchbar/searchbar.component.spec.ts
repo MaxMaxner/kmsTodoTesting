@@ -4,7 +4,7 @@ import { SearchbarComponent } from './searchbar.component'
 import { ToDoEntry } from '../ToDoEntry'
 import { Priority } from '../Priority'
 
-fdescribe('SearchbarComponent', () => {
+describe('SearchbarComponent', () => {
     let component: SearchbarComponent
     let fixture: ComponentFixture<SearchbarComponent>
     let list: ToDoEntry[] = [
