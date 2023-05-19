@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import { TodoService } from '../todo.service'
+import { ToDoEntry } from '../ToDoEntry'
 
-let fullToDoList: any = []
-let fullDoneList: any = []
+let fullToDoList: ToDoEntry[] = []
+let fullDoneList: ToDoEntry[] = []
 
 @Component({
     selector: 'app-searchbar',
@@ -17,12 +18,17 @@ export class SearchbarComponent implements OnInit {
         fullDoneList = this.todoService.doneList
     }
 
-    filterList($event: any) {
-        let searchstring: string = $event.target.value.toLowerCase()
-        console.log(searchstring)
+    filterList(e: Event) {
+        const input = e.target as HTMLInputElement;
+        let searchstring: string;
+        if(input.value != null){
+            searchstring = input.value;
+        } else {
+            searchstring = '';
+        }
 
-        let newToDoList = this.testList(fullToDoList, searchstring)
-        let newDoneList = this.testList(fullDoneList, searchstring)
+        const newToDoList = this.testList(fullToDoList, searchstring)
+        const newDoneList = this.testList(fullDoneList, searchstring)
 
         if (searchstring != '') {
             this.todoService.todoList = newToDoList
@@ -33,14 +39,16 @@ export class SearchbarComponent implements OnInit {
         }
     }
 
-    testList(list: any, searchstring: string) {
-        let newList = []
+    testList(list: ToDoEntry[], searchstring: string) {
+        const newList = []
         for (let i = 0; i < list.length; i++) {
-            let title = list[i].title.toLowerCase()
-            let priority = list[i].priority.toLowerCase()
-            let kategorie = ''
-            if (list[i].kategorie != null) {
-                kategorie = list[i].kategorie.toLowerCase()
+            const title: string = list[i].title.toLowerCase()
+            const priority = list[i].priority.toLowerCase()
+            let kategorie: string | undefined = list[i].kategorie;
+            if(kategorie != undefined){
+                kategorie.toLowerCase();
+            } else {
+                kategorie = '';
             }
             if (
                 title.includes(searchstring) ||
