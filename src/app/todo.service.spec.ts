@@ -33,4 +33,14 @@ describe('TodoService', () => {
 
         expect(sortedList).toEqual(SortedMockToDoList)
     })
+
+    it('should mark as done', () => {
+        service.markDone(0);
+        expect(service.doneList.length).toBe(1);
+    })
+
+    it('should add a bezeichung', () => {
+        service.addBezeichnung('test', 0);
+        expect(service.todoList[0].kategorie).toBe('test');
+    })
 })
