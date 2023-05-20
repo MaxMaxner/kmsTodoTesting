@@ -18,11 +18,10 @@ button {
     margin-left: 5px;
 }
 
-.sort-button {
-    width: 2vw;
-    height: 4vh;
-    padding: 0;
-    margin: 0;
-    border: none;
-    background-color: white;
+.table {
+    user-select: none;
+}
+
+i {
+    cursor: pointer;
 }

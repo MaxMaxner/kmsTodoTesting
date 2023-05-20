@@ -27,10 +27,10 @@ describe('SearchbarComponent', () => {
         expect(component).toBeTruthy()
     })
 
-    it('should return a toDo', ()=>{
-        let test = component.testList(list, "milch")
+    it('should return the correct toDo', () => {
+        let test = component.testList(list, 'milch')
 
-        expect(test.length).toEqual(1);
-        expect(test[0].title).toEqual("Milch");
+        expect(test.length).toEqual(1)
+        expect(test[0].title).toEqual('Milch')
     })
 })

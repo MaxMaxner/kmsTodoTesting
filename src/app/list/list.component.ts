@@ -31,13 +31,31 @@ export class ListComponent {
         console.log(this.list)
     }
 
-    alphaNumSort(toSort: string) {
-        toDoSort = this.sortBy(toSort, this.todoService.todoList, toDoSort)
-        doneSort = this.sortBy(toSort, this.todoService.doneList, doneSort)
+    alphaNumSort(toSort: string, e: Event) {
+        const target = e.target as HTMLElement
+        const listToSort =
+            target.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.id.toLowerCase()
+        if (listToSort == 'todolist') {
+            toDoSort = this.sortBy(toSort, this.todoService.todoList, toDoSort)
+
+            if (toDoSort) {
+                target.innerHTML = '&uarr;'
+            } else {
+                target.innerHTML = '&darr;'
+            }
+        }
+        if (listToSort == 'donelist') {
+            doneSort = this.sortBy(toSort, this.todoService.doneList, doneSort)
+
+            if (doneSort) {
+                target.innerHTML = '&uarr;'
+            } else {
+                target.innerHTML = '&darr;'
+            }
+        }
     }
 
     sortBy(toSort: string, list: ToDoEntry[], bool: boolean) {
-        console.log(toSort)
         if (bool) {
             if (toSort != 'priority') list.sort((a, b) => (a[toSort] < b[toSort] ? -1 : 1))
             else {
