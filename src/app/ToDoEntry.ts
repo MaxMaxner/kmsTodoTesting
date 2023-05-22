@@ -6,6 +6,7 @@ export class ToDoEntry {
     date: Date
     priority: Priority
     kategorie?: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [key: string]: any
 
     constructor(title: string, priority: Priority = Priority.Normal, kategorie?: string) {
