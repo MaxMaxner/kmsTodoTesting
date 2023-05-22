@@ -38,7 +38,7 @@ export class ListComponent {
         if (listToSort == 'todolist') {
             toDoSort = this.sortBy(toSort, this.todoService.todoList, toDoSort)
 
-            if (toDoSort) {
+            if (target.innerHTML.charCodeAt(0) == 9650) {
                 target.innerHTML = '&#9660;'
             } else {
                 target.innerHTML = '&#9650;'
@@ -47,7 +47,7 @@ export class ListComponent {
         if (listToSort == 'donelist') {
             doneSort = this.sortBy(toSort, this.todoService.doneList, doneSort)
 
-            if (doneSort) {
+            if (target.innerHTML.charCodeAt(0) == 9650) {
                 target.innerHTML = '&#9660;'
             } else {
                 target.innerHTML = '&#9650;'
