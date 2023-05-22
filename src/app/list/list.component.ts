@@ -32,7 +32,7 @@ export class ListComponent {
         console.log(this.list)
     }
 
-    alphaNumSort(toSort: string, e: Event) {
+    sortList(toSort: string, e: Event) {
         const target = e.target as HTMLElement
         const listToSort =
             target.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.id.toLowerCase()

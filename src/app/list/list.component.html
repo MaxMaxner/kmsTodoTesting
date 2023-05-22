@@ -3,10 +3,20 @@
         <thead>
             <tr>
                 <th scope="col"></th>
-                <th scope="col">Title <i class="sort-arrow" (click)="alphaNumSort('title', $event)">&#9660;</i></th>
-                <th scope="col">Date <i class="sort-arrow" (click)="alphaNumSort('date', $event)">&#9660;</i></th>
-                <th scope="col">Priority <i class="sort-arrow" (click)="alphaNumSort('priority', $event)">&#9660;</i></th>
-                <th scope="col">Kategorie <i class="sort-arrow" (click)="alphaNumSort('kategorie', $event)">&#9660;</i></th>
+                <th scope="col">
+                    Title <i class="sort-arrow" (click)="sortList('title', $event)">&#9660;</i>
+                </th>
+                <th scope="col">
+                    Date <i class="sort-arrow" (click)="sortList('date', $event)">&#9660;</i>
+                </th>
+                <th scope="col">
+                    Priority
+                    <i class="sort-arrow" (click)="sortList('priority', $event)">&#9660;</i>
+                </th>
+                <th scope="col">
+                    Kategorie
+                    <i class="sort-arrow" (click)="sortList('kategorie', $event)">&#9660;</i>
+                </th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -19,11 +29,7 @@
                 <td>{{ item.kategorie }}</td>
 
                 <td class="text-right">
-                    <button
-                        type="button"
-                        class="btn btn-success"
-                        (click)="addKategorieClicked(i)"
-                    >
+                    <button type="button" class="btn btn-success" (click)="addKategorieClicked(i)">
                         Kategorie
                     </button>
                     <button
