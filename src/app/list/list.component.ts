@@ -39,18 +39,18 @@ export class ListComponent {
             toDoSort = this.sortBy(toSort, this.todoService.todoList, toDoSort)
 
             if (toDoSort) {
-                target.innerHTML = '&uarr;'
+                target.innerHTML = '&#9660;'
             } else {
-                target.innerHTML = '&darr;'
+                target.innerHTML = '&#9650;'
             }
         }
         if (listToSort == 'donelist') {
             doneSort = this.sortBy(toSort, this.todoService.doneList, doneSort)
 
             if (doneSort) {
-                target.innerHTML = '&uarr;'
+                target.innerHTML = '&#9660;'
             } else {
-                target.innerHTML = '&darr;'
+                target.innerHTML = '&#9650;'
             }
         }
     }
