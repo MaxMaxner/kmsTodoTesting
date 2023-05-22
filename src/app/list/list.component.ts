@@ -20,7 +20,8 @@ export class ListComponent {
 
     async addKategorieClicked(index: number) {
         try {
-            const bezeichnung = await this.modalService.open(KategorieComponent).result
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            const bezeichnung: string = await this.modalService.open(KategorieComponent).result
             this.todoService.addBezeichnung(bezeichnung, index)
         } catch (err) {
             console.log('Window closed...', err)
