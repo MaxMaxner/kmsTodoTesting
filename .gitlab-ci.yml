@@ -1,6 +1,21 @@
-run_test:
-    image: typescript
-    before_script: 
-        - apt-get update && apt -get install make
-    script:
-        -make test
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  image: node:14
+  before_script:
+    - npm install
+  script:
+    - npm run lint
+    - npm run build -- --prod
+
+test:
+  stage: test
+  image: node:14
+  before_script:
+    - npm install
+  script:
+    - npm run test
