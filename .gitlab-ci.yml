@@ -5,7 +5,7 @@ stages:
 
 build:
   stage: build
-  image: node:16.14.2-bullseye
+  image: node:latest
   before_script:
     - npm install
   script:
@@ -14,7 +14,7 @@ build:
 
 test:
   stage: test
-  image: node:16.14.2-bullseye
+  image: node:latest
   before_script:
     - npm install
   script:
