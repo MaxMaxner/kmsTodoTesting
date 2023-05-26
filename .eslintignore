@@ -1,0 +1,8 @@
+node_modules
+dist
+build
+
+karma.conf.js
+
+# Files copied as part of the build
+packages/types/src/generated/**/*.ts

@@ -12,10 +12,4 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   root: true,
-  ignorePatterns: [
-    'node_modules/',
-    '.angular/',
-    'karma.conf.js',
-    '**/*.spec.ts',
-  ],
 };
