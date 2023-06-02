@@ -7,9 +7,6 @@ client:job:
       - nodejs
       - npm
   script: 
-   
-    - source ~/.bashrc
-    - nvm install v16.15.1
     - npm install
     - npm install @angular-eslint/schematics@13.3.0
     - npm run build 
