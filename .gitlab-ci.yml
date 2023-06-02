@@ -23,3 +23,11 @@ test:
   stage: test
   script:
     - echo "running scripts in the test job"
+
+job_1:
+  stage: stage_a
+  image: node:12-alpine
+  tags:
+    - docker
+  script:
+    - node --version
