@@ -11,8 +11,5 @@ client:job:
     - npm i eslint
     - npm init @eslint/config
     - node_modules/eslint/bin/eslint.js
-  cache:
-    key: node-cache
-    paths:
-      - node_modules
+ 
 
