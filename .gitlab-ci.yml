@@ -8,6 +8,7 @@ client:job:
       - npm
   script: 
     - npm install
+    - npm run build 
     - npm i eslint
     - npm init @eslint/config
     - npm install @typescript-eslint/eslint-plugin@latest --save-dev
@@ -15,5 +16,6 @@ client:job:
   cache:
     key: node-cache
     paths:
+      - dist
       - node_modules
 
