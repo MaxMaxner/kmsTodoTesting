@@ -1,33 +1,10 @@
-.macos_saas_runners:
-  tags:
-    - saas-macos-medium-m1
-  image: macos-12-xcode-14
+image: node:12-alpine
 
 stages:
-  - build
+  - setup
   - test
 
-before_script:
-  - echo "started by ${akwg43}"
-
-build:
-  extends:
-    - .macos_saas_runners
-  stage: build
+install:
+  stage: setup
   script:
-    - echo "running scripts in the build job"
-
-test:
-  extends:
-    - .macos_saas_runners
-  stage: test
-  script:
-    - echo "running scripts in the test job"
-
-job_1:
-  stage: stage_a
-  image: node:12-alpine
-  tags:
-    - docker
-  script:
-    - node --version
+    - npm ci
