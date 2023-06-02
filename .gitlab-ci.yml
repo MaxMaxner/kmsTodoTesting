@@ -2,8 +2,7 @@ stages:
   - setup
    
 setup:
-  image:
-    name: nodejs
+
   stage: setup
   needs: []
   script:
