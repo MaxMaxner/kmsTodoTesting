@@ -2,7 +2,7 @@ stages:
   - setup
    
 setup:
-  stage: client
+  stage: setup
   tags: 
       - nodejs
       - npm 
