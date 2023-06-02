@@ -3,7 +3,7 @@ stages:
    
 setup:
   image:
-    name: node:12
+    name: nodejs
   stage: setup
   needs: []
   script:
