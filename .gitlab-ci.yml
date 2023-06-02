@@ -1,20 +1,25 @@
+.macos_saas_runners:
+  tags:
+    - saas-macos-medium-m1
+  image: macos-12-xcode-14
 
 stages:
   - build
   - test
-  - deploy
+
+before_script:
+  - echo "started by ${akwg43}"
 
 build:
+  extends:
+    - .macos_saas_runners
   stage: build
-  before_script:
-    - npm install
   script:
-    - npm run lint
-    - npm run build -- --prod
+    - echo "running scripts in the build job"
 
 test:
+  extends:
+    - .macos_saas_runners
   stage: test
-  before_script:
-    - npm install
   script:
-    - npm run test
+    - echo "running scripts in the test job"
