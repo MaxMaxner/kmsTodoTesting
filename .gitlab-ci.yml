@@ -9,7 +9,6 @@ client:job:
   script: 
     - npm install
     - npm install @angular-eslint/schematics@13.3.0
-    - npm run build 
     - npm i eslint
     - npm init @eslint/config
     - npm install @typescript-eslint/eslint-plugin@latest --save-dev
