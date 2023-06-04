@@ -1,14 +1,46 @@
 stages:
-  - client
+  - install
+  - build
+  - test
+  - toPDF
+  - toPDF1
 
-client:job:
-  stage: client
+install-job:
+  stage: install
+  tags: 
+      - nodejs
+      - npm 
+  script: 
+    - npm ci
+
+build-job:
+  stage: build
   tags: 
       - nodejs
       - npm
   script: 
-    - npm install
+    - build
 
-  
- 
+unittest-job:
+  stage: test
+  tags: 
+      - nodejs
+      - npm 
+  script: 
+    - npm ci !reference 
+    - npm run test -- --no-watch --browser=ChromeHeadlessCI
+
+job 1/2:
+  stage: toPDF
+  script:
+    - echo "PDF"
+
+job 2/2:
+  stage: toPDF1
+  script:
+    - echo "PDF1"
+
+
+    
+
 
