@@ -27,7 +27,7 @@ unittest-job:
       - nodejs
       - npm 
   script: 
-    - npm test -- --no-watch --browser=ChromeHeadlessCI
+    -   npm run test
 
 job 1/2:
   stage: toPDF
