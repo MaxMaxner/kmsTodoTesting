@@ -19,7 +19,7 @@ build-job:
       - nodejs
       - npm
   script: 
-    -  build
+    - npm build
 
 unittest-job:
   stage: test
