@@ -27,7 +27,6 @@ unittest-job:
       - nodejs
       - npm 
   script: 
-    - npm 
     - npm test -- --no-watch --browser=ChromeHeadlessCI
 
 job 1/2:
