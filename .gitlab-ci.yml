@@ -18,7 +18,6 @@ build-job:
   tags: 
       - nodejs
       - npm
-      - ng
   script: 
     - ng build
 
