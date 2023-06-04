@@ -18,8 +18,9 @@ build-job:
   tags: 
       - nodejs
       - npm
+      - ng
   script: 
-    - build
+    - ng build
 
 unittest-job:
   stage: test
