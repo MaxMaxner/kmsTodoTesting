@@ -2,53 +2,78 @@ stages:
   - install
   - build
   - test
-  - toPDF
-  - toPDF1
+  - sonarqube
+  #- toPDF
+  #- toPDF1
+
+
 
 setup-job 1/2:
   stage: install
-  tags: 
+  tags:
       - nodejs
-      - npm 
-  script: 
+      - npm
+  script:
     - npm ci
+  only:
+    - merge_requests
+    - master
+
 
 setup-job 2/2:
   stage: build
-  tags: 
+  tags:
       - nodejs
       - npm
-  script: 
+  script:
     - npm build
+  only:
+    - merge_requests
+    - master
+
 
 unittest-job:
   stage: test
-  tags: 
-     - nodejs
-     - npm 
-  script: 
-     -  npm run test
-
-job 1/2::
-
-  stage: toPDF
-  needs: []  
   tags:
      - nodejs
+     - npm
   script:
-     - makepdf
-  artifacts:
-    expire_in: 1 week
-    paths:
-      - "todoList/todoList.pdf"
-  when: on_success
+     -  npm run test
+  only:
+    - merge_requests
+    - master
 
-job 2/2:
-  stage: toPDF1
+
+sonarqube:
+  stage:
+    sonarqube
+  tags:
+    - sonarqube
+  variables:
+    GIT_DEPTH: "0"
   script:
-    - echo "PDF1"
+    - sonar-scanner -D"sonar.projectKey=kms-todo-2023" -Dsonar.login=f7ed6a1b43851b7af315758cb25fe1318fcf1aa4 -Dsonar.host.url=https://scm.thm.de/sonar
+  only:
+    - master
 
 
 
 
 
+#job 1/2::
+#stage: toPDF
+#needs: []
+#tags:
+#  - nodejs
+#script:
+#  - makepdf
+#artifacts:
+#  expire_in: 1 week
+#  paths:
+#    - "todoList/todoList.pdf"
+#when: on_success
+
+#job 2/2:
+#  stage: toPDF1
+#  script:
+#    - echo "PDF1"
