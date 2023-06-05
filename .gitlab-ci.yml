@@ -29,10 +29,19 @@ build-job:
 #  script: 
 #    -   npm run test
 
-job 1/2:
+
+job 1/2::
+  image:
+    name: texlive/texlive
   stage: toPDF
+  needs: []
   script:
     - echo "PDF"
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - "todoList/todoList.pdf"
+  when: on_success
 
 job 2/2:
   stage: toPDF1
@@ -40,6 +49,6 @@ job 2/2:
     - echo "PDF1"
 
 
-    
+
 
 
