@@ -38,12 +38,13 @@ unittest-job:
     - nodejs
     - npm
   script:
+    - npm install
     - ng test
   only:
     #- merge_requests
     #- master
 
-
+# go to: https://scm.thm.de/sonar/dashboard?id=kms-todo-2023
 sonarqube:
   stage:
     sonarqube
