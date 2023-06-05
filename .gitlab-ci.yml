@@ -5,7 +5,7 @@ stages:
   - toPDF
   - toPDF1
 
-install-job:
+setup-job 1/2:
   stage: install
   tags: 
       - nodejs
@@ -13,7 +13,7 @@ install-job:
   script: 
     - npm ci
 
-build-job:
+setup-job 2/2:
   stage: build
   tags: 
       - nodejs
@@ -21,13 +21,13 @@ build-job:
   script: 
     - npm build
 
-#unittest-job:
-#  stage: test
-#  tags: 
-#      - nodejs
-#      - npm 
-#  script: 
-#    -   npm run test
+unittest-job:
+  stage: test
+  tags: 
+     - nodejs
+     - npm 
+  script: 
+     -  npm run test
 
 job 1/2::
 
@@ -36,7 +36,7 @@ job 1/2::
   tags:
      - nodejs
   script:
-    - makepdf
+     - makepdf
   artifacts:
     expire_in: 1 week
     paths:
