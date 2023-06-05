@@ -35,10 +35,10 @@ setup-job 2/2:
 unittest-job:
   stage: test
   tags:
-     - nodejs
-     - npm
+    - nodejs
+    - npm
   script:
-     -  npm run test
+    - ng test
   only:
     #- merge_requests
     #- master
