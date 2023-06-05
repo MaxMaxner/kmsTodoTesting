@@ -16,8 +16,8 @@ setup-job 1/2:
   script:
     - npm ci
   only:
-    - merge_requests
-    - master
+    #- merge_requests
+    #- master
 
 
 setup-job 2/2:
@@ -28,8 +28,8 @@ setup-job 2/2:
   script:
     - npm build
   only:
-    - merge_requests
-    - master
+    #- merge_requests
+    #- master
 
 
 unittest-job:
@@ -40,8 +40,8 @@ unittest-job:
   script:
      -  npm run test
   only:
-    - merge_requests
-    - master
+    #- merge_requests
+    #- master
 
 
 sonarqube:
