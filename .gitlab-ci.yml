@@ -29,14 +29,14 @@ build-job:
 #  script: 
 #    -   npm run test
 
-
 job 1/2::
-  image:
-    name: texlive/texlive
+
   stage: toPDF
-  needs: []
+  needs: []  
+  tags:
+     - nodejs
   script:
-    - echo "PDF"
+    - makepdf
   artifacts:
     expire_in: 1 week
     paths:
