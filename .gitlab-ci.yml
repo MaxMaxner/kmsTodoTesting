@@ -22,13 +22,7 @@ setup-job 2/2:
   script:
     - npm build
 
-#unittest-job:
-#  stage: test
-#  tags:
-#    - nodejs
-#    - npm
-#  script:
-#    -  npm run test
+
 
 
 # go to: https://scm.thm.de/sonar/dashboard?id=kms-todo-2023
@@ -45,12 +39,16 @@ sonarqube:
     #- master
 
 
+#unittest-job:
+#  stage: test
+#  tags:
+#    - nodejs
+#    - npm
+#  script:
+#    -  npm run test
 
 
-
-
-#  job 1/2::
-
+#job 1/2:
 #stage: toPDF
 #needs: []
 #tags:
@@ -63,7 +61,8 @@ sonarqube:
 #    - "todoList/todoList.pdf"
 #when: on_success
 
-job 2/2:
-  stage: toPDF1
-  script:
-    - echo "PDF1"
+
+#job 2/2:
+#  stage: toPDF1
+#  script:
+#    - echo "PDF1"
