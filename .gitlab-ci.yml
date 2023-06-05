@@ -36,10 +36,9 @@ setup-job 2/2:
 lint:
   stage: lint
   tags:
-    - nodelts
-  before_script:
-    - npm install
+    - nodejs
   script:
+    - npm install
     - npx eslint .
   #only:
     #- merge_requests
