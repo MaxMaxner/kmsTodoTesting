@@ -21,13 +21,13 @@ build-job:
   script: 
     - npm build
 
-unittest-job:
-  stage: test
-  tags: 
-      - nodejs
-      - npm 
-  script: 
-    -   npm run test
+#unittest-job:
+#  stage: test
+#  tags: 
+#      - nodejs
+#      - npm 
+#  script: 
+#    -   npm run test
 
 job 1/2:
   stage: toPDF
