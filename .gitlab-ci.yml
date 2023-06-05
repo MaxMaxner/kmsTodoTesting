@@ -16,8 +16,8 @@ setup-job 1/2:
   script:
     - npm ci
   only:
-    #- merge_requests
-    #- master
+    - merge_requests
+    - master
 
 
 setup-job 2/2:
@@ -28,8 +28,8 @@ setup-job 2/2:
   script:
     - npm build
   only:
-    #- merge_requests
-    #- master
+    - merge_requests
+    - master
 
 
 unittest-job:
@@ -41,8 +41,8 @@ unittest-job:
     - npm install
     - ng test
   only:
-    #- merge_requests
-    #- master
+    - merge_requests
+    - master
 
 # go to: https://scm.thm.de/sonar/dashboard?id=kms-todo-2023
 sonarqube:
@@ -54,11 +54,8 @@ sonarqube:
     GIT_DEPTH: "0"
   script:
     - sonar-scanner -D"sonar.projectKey=kms-todo-2023" -Dsonar.login=f7ed6a1b43851b7af315758cb25fe1318fcf1aa4 -Dsonar.host.url=https://scm.thm.de/sonar
-  #only:
-  #  - master
-
-
-
+  only:
+    - master
 
 
 #job 1/2::
