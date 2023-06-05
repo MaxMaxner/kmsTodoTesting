@@ -2,9 +2,10 @@ stages:
   - install
   - build
   - test
+  - lint
   - sonarqube
-  #- toPDF
-  #- toPDF1
+  - toPDF
+  - toPDF1
 
 
 
@@ -32,17 +33,37 @@ setup-job 2/2:
     - master
 
 
-unittest-job:
+lint:
+  stage: lint
+  tags:
+    - nodejs
+  before_script:
+    - cd frontend
+    - npm install
+  script:
+    - npx eslint .
+  #only:
+    #- merge_requests
+    #- master
+
+
+test:
   stage: test
   tags:
     - nodejs
-    - npm
-  script:
+  before_script:
     - npm install
-    - ng test
-  only:
-    - merge_requests
-    - master
+  script:
+    - apt update
+    - apt upgrade -y
+    - apt install -y chromium
+    - export CHROME_BIN=/usr/bin/chromium
+    - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessCI
+  #only:
+    #- merge_requests
+    #- master
+
+
 
 # go to: https://scm.thm.de/sonar/dashboard?id=kms-todo-2023
 sonarqube:
@@ -54,8 +75,21 @@ sonarqube:
     GIT_DEPTH: "0"
   script:
     - sonar-scanner -D"sonar.projectKey=kms-todo-2023" -Dsonar.login=f7ed6a1b43851b7af315758cb25fe1318fcf1aa4 -Dsonar.host.url=https://scm.thm.de/sonar
-  only:
-    - master
+  #only:
+    #- master
+
+
+#unittest-job:
+#  stage: test
+#  tags:
+#    - nodejs
+#    - npm
+#  script:
+#    - npm install
+#    - ng test
+#  only:
+#    - merge_requests
+#    - master
 
 
 #job 1/2::
