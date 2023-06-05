@@ -1,63 +1,34 @@
 stages:
   - install
   - build
-  - lint
   - test
   - sonarqube
   - toPDF
   - toPDF1
 
-
-
 setup-job 1/2:
   stage: install
   tags:
-      - nodejs
-      - npm
+    - nodejs
+    - npm
   script:
     - npm ci
-  #only:
-    #- merge_requests
-    #- master
-
 
 setup-job 2/2:
   stage: build
   tags:
-      - nodejs
-      - npm
+    - nodejs
+    - npm
   script:
     - npm build
-  #only:
-    #- merge_requests
-    #- master
 
-
-lint:
-  stage: lint
-  tags:
-    - nodejs
-  script:
-    - npm install
-    - npm run lint
-  #only:
-    #- merge_requests
-    #- master
-
-
-test:
+unittest-job:
   stage: test
   tags:
-    - nodelts
-  before_script:
-    - npm install
+    - nodejs
+    - npm
   script:
-    - export CHROME_BIN=/usr/bin/chromium
-    - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessCI
-  #only:
-    #- merge_requests
-    #- master
-
+    -  npm run test
 
 
 # go to: https://scm.thm.de/sonar/dashboard?id=kms-todo-2023
@@ -70,24 +41,16 @@ sonarqube:
     GIT_DEPTH: "0"
   script:
     - sonar-scanner -D"sonar.projectKey=kms-todo-2023" -Dsonar.login=f7ed6a1b43851b7af315758cb25fe1318fcf1aa4 -Dsonar.host.url=https://scm.thm.de/sonar
-  #only:
+    #only:
     #- master
 
 
-#unittest-job:
-#  stage: test
-#  tags:
-#    - nodejs
-#    - npm
-#  script:
-#    - npm install
-#    - ng test
-#  only:
-#    - merge_requests
-#    - master
 
 
-#job 1/2::
+
+
+#  job 1/2::
+
 #stage: toPDF
 #needs: []
 #tags:
@@ -100,7 +63,7 @@ sonarqube:
 #    - "todoList/todoList.pdf"
 #when: on_success
 
-#job 2/2:
-#  stage: toPDF1
-#  script:
-#    - echo "PDF1"
+job 2/2:
+  stage: toPDF1
+  script:
+    - echo "PDF1"
