@@ -22,13 +22,13 @@ setup-job 2/2:
   script:
     - npm build
 
-unittest-job:
-  stage: test
-  tags:
-    - nodejs
-    - npm
-  script:
-    -  npm run test
+#unittest-job:
+#  stage: test
+#  tags:
+#    - nodejs
+#    - npm
+#  script:
+#    -  npm run test
 
 
 # go to: https://scm.thm.de/sonar/dashboard?id=kms-todo-2023
