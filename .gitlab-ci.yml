@@ -1,8 +1,8 @@
 stages:
   - install
   - build
-  - test
   - lint
+  - test
   - sonarqube
   - toPDF
   - toPDF1
@@ -54,9 +54,6 @@ test:
   before_script:
     - npm install
   script:
-    - apt update
-    - apt upgrade -y
-    - apt install -y chromium
     - export CHROME_BIN=/usr/bin/chromium
     - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessCI
   #only:
