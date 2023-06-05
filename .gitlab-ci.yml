@@ -39,7 +39,7 @@ lint:
     - nodejs
   script:
     - npm install
-    - npx eslint .
+    - npm run lint
   #only:
     #- merge_requests
     #- master
