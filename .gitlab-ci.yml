@@ -5,6 +5,7 @@ stages:
   - sonarqube
   - toPDF
   - toPDF1
+  - deploy
 
 setup-job 1/2:
   stage: install
@@ -37,6 +38,17 @@ sonarqube:
     - merge_requests
     - master
 
+
+deploy:
+  stage: deploy
+  tags:
+    - nodejs
+  script:
+    - npm install -g gh-pages
+    - echo 'localhost:4200' > ./dist/ng-todo/CNAME
+    - gh-pages -d dist
+  only:
+    - master
 
 #unittest-job:
 #  stage: test
