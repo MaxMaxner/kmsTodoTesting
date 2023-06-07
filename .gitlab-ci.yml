@@ -38,6 +38,17 @@ sonarqube:
     - master
 
 
+deploy:
+  stage: deploy
+  tags:
+    - nodejs
+  script:
+    - npm install -g gh-pages
+    - echo 'localhost:4200' > ./dist/ng-todo/CNAME
+    - gh-pages -d dist
+  only:
+    - master
+
 #unittest-job:
 #  stage: test
 #  tags:
