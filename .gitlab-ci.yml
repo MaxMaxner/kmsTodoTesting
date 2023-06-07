@@ -5,6 +5,7 @@ stages:
   - sonarqube
   - toPDF
   - toPDF1
+  - deploy
 
 setup-job 1/2:
   stage: install
