@@ -45,7 +45,7 @@ deploy:
     - nodejs
   script:
     - npm install -g gh-pages
-    - gh-pages -d kms-todo
+    - gh-pages -d dist
   only:
     - master
 
