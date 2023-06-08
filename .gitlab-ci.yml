@@ -45,8 +45,8 @@ deploy:
     - nodejs
   script:
     - npm install -g gh-pages
-    - ls -lR kms-todo      # List the contents of 'kms-todo' directory
-    - gh-pages -d kms-todo/dist/ng-todo
+    - ls -lR              # List the contents of root directory
+    - gh-pages -d dist/ng-todo
   only:
     - master
 
