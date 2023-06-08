@@ -27,7 +27,7 @@ setup-job 2/2:
 # go to: https://scm.thm.de/sonar/dashboard?id=kms-todo-2023
 sonarqube:
   stage:
-    - sonarqube
+  sonarqube
   tags:
     - sonarqube
   variables:
