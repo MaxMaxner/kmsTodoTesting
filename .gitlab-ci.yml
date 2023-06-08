@@ -46,7 +46,7 @@ deploy:
     - nodejs
   script:
     - npm install -g gh-pages
-    - ls -lR              # List the contents of root directory
+    - ls -lR
     - gh-pages -d dist/ng-todo
   only:
     - master
