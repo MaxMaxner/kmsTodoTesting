@@ -21,7 +21,8 @@ setup-job 2/2:
     - nodejs
     - npm
   script:
-    - npm build
+    - npm install -g @angular/cli
+    - ng build --prod --base-href=/kms-todo/
 
 
 # go to: https://scm.thm.de/sonar/dashboard?id=kms-todo-2023
