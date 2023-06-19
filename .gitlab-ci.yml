@@ -51,7 +51,7 @@ deploy:
     - ls -lR
     - gh-pages -d /dist/ng-todo
   dependencies:
-    - build
+    - setup-job 2/2
 
 #unittest-job:
 #  stage: test
