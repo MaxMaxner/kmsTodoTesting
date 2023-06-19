@@ -24,7 +24,7 @@ build:
     - npm build
   artifacts:
     paths:
-      - kms-todo/dist/
+      - kms-todo/dist/ng-todo/
 
 sonarqube:
   stage: sonarqube
