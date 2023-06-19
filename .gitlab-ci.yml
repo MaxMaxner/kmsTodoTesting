@@ -22,6 +22,9 @@ setup-job 2/2:
     - npm
   script:
     - npm build
+  artifacts:
+    paths:
+      - dist
 
 
 # go to: https://scm.thm.de/sonar/dashboard?id=kms-todo-2023
@@ -46,9 +49,9 @@ deploy:
   script:
     - npm install -g gh-pages
     - ls -lR
-    - gh-pages -d /builds/bmfr19/dist/ng-todo
-  only:
-    - master
+    - gh-pages -d /dist/ng-todo
+  dependencies:
+    - setup-job 2/2
 
 #unittest-job:
 #  stage: test
