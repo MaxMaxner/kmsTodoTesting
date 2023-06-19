@@ -49,7 +49,7 @@ deploy:
   script:
     - npm install -g gh-pages
     - ls -lR
-    - gh-pages -d /dist/ng-todo
+    - gh-pages -d /builds/bmfr19/dist/ng-todo
   dependencies:
     - setup-job 2/2
 
