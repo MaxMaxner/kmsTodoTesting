@@ -21,7 +21,7 @@ build:
     - nodejs
     - npm
   script:
-    - npm run build
+    - npm build
   artifacts:
     paths:
       - kms-todo/dist/
