@@ -5,6 +5,6 @@ build
 karma.conf.js
 www
 android
-
+**/*.spec.ts
 # Files copied as part of the build
 packages/types/src/generated/**/*.ts
